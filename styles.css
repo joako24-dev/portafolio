@@ -463,7 +463,7 @@ strong { color: var(--white); font-weight: 600; }
   object-position: center 15%;
   display: block;
   border-radius: 8px;
-  box-shadow: 3px solid rgba(114, 50, 242, 0.5);
+  box-shadow: 0 8px 32px rgba(114, 50, 242, 0.25);
 }
 
 .photo-placeholder {
@@ -980,14 +980,7 @@ strong { color: var(--white); font-weight: 600; }
 
 .form-success.show { display: block; }
 
-/* ── FOTO DE PERFIL ───────────────────────────────────────── */
-.about-photo {
-  width: 260px;
-  height: 340px;
-  object-fit: cover;
-  object-position: center 15%;
-  display: block;
-}
+
 
 /* ── IMAGEN DE PROYECTO ───────────────────────────────────── */
 .port-img {
@@ -1047,6 +1040,109 @@ strong { color: var(--white); font-weight: 600; }
 }
 
 .footer-socials a:hover { color: var(--accent); }
+
+/* ── PRELOADER ────────────────────────────────────────────── */
+#preloader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+#preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.preloader-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.pre-name-wrap {
+  display: flex;
+  gap: 0.4em;
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 8vw, 5rem);
+  letter-spacing: 0.06em;
+  color: var(--white);
+}
+
+.pre-word {
+  display: flex;
+  align-items: baseline;
+}
+
+/* J arranca desplazada a la derecha (cerca de la M) y se mueve a la izquierda */
+.pre-letter {
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+.pre-word:first-child .pre-letter {
+  transform: translateX(0.4em);
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#preloader.expanded .pre-word:first-child .pre-letter {
+  transform: translateX(0);
+}
+
+/* Las letras ocultas se revelan de izquierda a derecha */
+.pre-rest {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 0;
+  transition: max-width 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ORALES aparece 80ms después que OAQUÍN */
+.pre-word:last-child .pre-rest {
+  transition-delay: 0.08s;
+}
+
+#preloader.expanded .pre-rest {
+  max-width: 600px;
+}
+
+.pre-bar {
+  width: 140px;
+  height: 1px;
+  background: var(--border2);
+}
+
+.pre-fill {
+  height: 100%;
+  background: var(--accent);
+  width: 0;
+  animation: fillBar 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes fillBar {
+  to { width: 100%; }
+}
+
+/* ── TYPED CURSOR ─────────────────────────────────────────── */
+.typed-cursor {
+  display: inline-block;
+  color: var(--accent);
+  font-weight: 300;
+  margin-left: 1px;
+  animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
 
 /* ── RESPONSIVE ───────────────────────────────────────────── */
 @media (max-width: 1024px) {

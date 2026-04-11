@@ -233,6 +233,70 @@ function animateNumber(el, target, duration = 1500) {
 })();
 
 
+// ── PRELOADER ─────────────────────────────────────────────────
+(function initPreloader() {
+  const preloader = document.getElementById('preloader');
+  if (!preloader) return;
+
+  window.addEventListener('load', () => {
+    // Barra llena → expandir el nombre completo
+    setTimeout(() => {
+      preloader.classList.add('expanded');
+    }, 1600);
+
+    // Nombre completo visible → ocultar preloader
+    setTimeout(() => {
+      preloader.classList.add('hidden');
+    }, 2900);
+  });
+})();
+
+
+// ── EFECTO DE TIPEO ───────────────────────────────────────────
+(function initTypingEffect() {
+  const el = document.getElementById('typed-text');
+  if (!el) return;
+
+  const phrases = [
+    'Creo interfaces que fusionan diseño y código.',
+    'Transformo ideas en experiencias web.',
+    'Frontend Developer apasionado por el detalle.',
+  ];
+
+  let phraseIndex = 0;
+  let charIndex   = 0;
+  let isDeleting  = false;
+
+  function type() {
+    const current = phrases[phraseIndex];
+
+    if (isDeleting) {
+      el.textContent = current.slice(0, charIndex - 1);
+      charIndex--;
+    } else {
+      el.textContent = current.slice(0, charIndex + 1);
+      charIndex++;
+    }
+
+    let delay = isDeleting ? 35 : 65;
+
+    if (!isDeleting && charIndex === current.length) {
+      delay = 2400;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting  = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      delay = 500;
+    }
+
+    setTimeout(type, delay);
+  }
+
+  // Arranca después de que desaparece el preloader
+  setTimeout(type, 3200);
+})();
+
+
 // ── LOG DE BIENVENIDA ─────────────────────────────────────────
 console.log('%c Joaquín Morales — Portfolio ', 'background:#7232f2;color:#fff;font-weight:bold;font-size:14px;padding:4px 8px;');
 console.log('%c Frontend Developer | HTML · CSS · JS · Python ', 'color:#7232f2;font-size:11px;');
