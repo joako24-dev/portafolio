@@ -1,244 +1,402 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Portafolio | Desarrollador Web</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joaquín Morales — Frontend Developer</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Barlow+Condensed:wght@300;400;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-    <!-- Navegación -->
-    <nav class="navbar">
-        <div class="container">
-            <a href="#" class="logo">Portafolio<span>.</span></a>
-            <ul class="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#sobre-mi">Sobre Mí</a></li>
-                <li><a href="#proyectos">Proyectos</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-            <div class="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
+
+  <!-- ░░ NAV ░░ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">JM</a>
+      <ul class="nav-links">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#resume" class="nav-link">Resume</a></li>
+        <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <span class="nav-phone">+54 11 5962-7747</span>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ░░ MOBILE MENU ░░ -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#home" class="mob-link">Home</a></li>
+      <li><a href="#about" class="mob-link">About</a></li>
+      <li><a href="#resume" class="mob-link">Resume</a></li>
+      <li><a href="#portfolio" class="mob-link">Portfolio</a></li>
+      <li><a href="#contact" class="mob-link">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- ░░ HOME ░░ -->
+  <section id="home" class="section hero-section">
+    <div class="hero-bg">
+      <div class="hero-overlay"></div>
+      <div class="hero-grid-lines"></div>
+    </div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow reveal-up">Frontend Developer</p>
+      <h1 class="hero-name reveal-up" style="--d:.1s">
+        <span class="name-first">JOAQUÍN</span>
+        <span class="name-last">MORALES</span>
+      </h1>
+      <p class="hero-sub reveal-up" style="--d:.2s">Creo interfaces que fusionan diseño y código.</p>
+
+      <div class="hero-ctas reveal-up" style="--d:.3s">
+        <a href="#portfolio" class="btn-outline">Portfolio</a>
+        <a href="#contact" class="btn-solid">Contacto</a>
+      </div>
+
+      <div class="hero-socials reveal-up" style="--d:.45s">
+        <a href="https://github.com/joako24-dev" target="_blank" class="soc" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/joaquin-morales-514983381/" target="_blank" class="soc" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="" target="_blank" class="soc" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 010 19.366V5.457c0-.904.732-1.636 1.636-1.636h.749L12 11.18l9.615-7.359h.749c.904 0 1.636.732 1.636 1.636z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-scroll-indicator">
+      <div class="scroll-mouse">
+        <div class="scroll-wheel"></div>
+      </div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ░░ ABOUT ░░ -->
+  <section id="about" class="section about-section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-photo-col">
+          <div class="about-photo-frame">
+            <img src="imagenes/perfil.jpeg" alt="Joaquín Morales" class="about-photo">
+            <div class="photo-border-accent"></div>
+          </div>
+          <div class="about-location">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            Buenos Aires, Argentina
+          </div>
         </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section id="inicio" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <span class="hero-tag">Desarrollador Web</span>
-                <h1>Hola, soy <span class="highlight">Joquin Morales</span></h1>
-                <p class="hero-description">Transformo ideas en experiencias digitales excepcionales. Especializado en crear sitios web modernos, responsivos y optimizados para ofrecer la mejor experiencia de usuario.</p>
-                <div class="hero-buttons">
-                    <a href="#proyectos" class="btn btn-primary">Ver Proyectos</a>
-                    <a href="#contacto" class="btn btn-secondary">Contactar</a>
-                </div>
-                <div class="hero-social">
-                    <a href="https://github.com/joako24-dev" class="social-link"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/joaquin-morales-514983381/" class="social-link"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="image-wrapper">
-                    <img src="imagenes/perfil.jpeg" alt="Foto de perfil">
-                </div>
-            </div>
+        <div class="about-text-col">
+          <div class="section-eyebrow">About</div>
+          <h2 class="section-title">SOBRE MÍ</h2>
+          <p class="about-email">moralesjoaquin392@gmail.com</p>
+
+          <p class="about-bio">
+            Soy <strong>Joaquín Morales</strong>, Frontend Developer apasionado por crear experiencias web que combinan diseño elegante con código limpio y eficiente. Me especializo en construir interfaces que no solo funcionan, sino que se sienten increíbles.
+          </p>
+          <p class="about-bio">
+            Con dominio de <strong>HTML, CSS, JavaScript</strong> para el frontend y <strong>Python</strong> para el backend, puedo cubrir todo el proceso de desarrollo de una web desde el diseño hasta el deploy.
+          </p>
+
+          <div class="about-tags">
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS3</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Python</span>
+            <span class="tag">Responsive</span>
+            <span class="tag">Git</span>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Sobre Mí Section -->
-    <section id="sobre-mi" class="about">
-        <div class="container">
-            <h2 class="section-title">Sobre Mí</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Soy un desarrollador web apasionado por crear soluciones digitales que marquen la diferencia. Con más de 3 años de experiencia en el desarrollo web, he trabajado con diversas tecnologías y frameworks modernos.</p>
-                    <p>Mi enfoque se centra en escribir código limpio, mantenible y escalable. Disfruto enfrentando nuevos desafíos y aprendiendo constantemente nuevas tecnologías para mantenerme actualizado en este dinámico campo.</p>
-                    <div class="skills">
-                        <h3>Mis Habilidades</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">HTML5</span>
-                            <span class="skill-tag">CSS3</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">React</span>
-                            <span class="skill-tag">Node.js</span>
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">SQL</span>
-                            <span class="skill-tag">Git</span>
-                        </div>
-                    </div>
-                </div>
+  <!-- ░░ RESUME ░░ -->
+  <section id="resume" class="section resume-section">
+    <div class="container">
+      <div class="section-eyebrow">Resume</div>
+      <h2 class="section-title">SKILLS & EXPERIENCIA</h2>
+
+      <div class="resume-grid">
+
+        <!-- Skills -->
+        <div class="resume-col">
+          <h3 class="resume-col-title">SOFTWARE SKILLS</h3>
+          <div class="skills-list">
+            <div class="skill-row">
+              <div class="skill-icon-box">H</div>
+              <div class="skill-info">
+                <span class="skill-label">HTML5</span>
+                <div class="skill-bar"><div class="skill-fill" data-w="92%"></div></div>
+              </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Proyectos Section -->
-    <section id="proyectos" class="projects">
-        <div class="container">
-            <h2 class="section-title">Mis Proyectos</h2>
-            <p class="section-subtitle">Una selección de mis trabajos recientes</p>
-            
-            <div class="projects-grid">
-                <!-- Tarjeta de Proyecto 1 -->
-                <article class="project-card">
-                    <div class="card-image">
-                        <img src="imagenes/pasteleria.jpg" alt="Captura del proyecto">
-                        <div class="card-overlay">
-                            <a href="https://joako24-dev.github.io/su-postres-y-delicias-" target="_blank" class="overlay-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Su Postres Y Delicias</h3>
-                        <p class="card-description">Tienda online para una pasteleria y cafeteria rural</p>
-                        <div class="card-tags">
-                            <span>HTML 5</span>
-                            <span>CSS 3</span>
-                            <span>JAVA SCRIPT</span>
-                        </div>
-                        <a href="https://joako24-dev.github.io/su-postres-y-delicias-"  target="_blank" class="card-button">Ver Proyecto <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-
-                <!-- Tarjeta de Proyecto 2 -->
-                <article class="project-card">
-                    <div class="card-image">
-                        <img src="imagenes/logo.jpeg" alt="Captura del proyecto">
-                        <div class="card-overlay">
-                            <a href="https://joako24-dev.github.io/portafolio-nacho/"  target="_blank" class="overlay-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Portafolio de agencia de edicion</h3>
-                        <p class="card-description">Un portafolio realizado apra la agencia de edicion de nacho la cual busca demostrar los trabajos realizados por el y brindar la capacitacion para poder editar, la pagina cuenta con la manera de contactalo para poder recibir una atencion personal y unica en cada caso.</p>
-                        <div class="card-tags">
-                            <span>HTML 5</span>
-                            <span>CSS 3</span>
-                            <span>JAVA SCRIPT</span>
-                        </div>
-                        <a href="https://joako24-dev.github.io/portafolio-nacho/" target="_blank" class="card-button">Ver Proyecto <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-
-                <!-- Tarjeta de Proyecto 3 -->
-                <article class="project-card">
-                    <div class="card-image">
-                        <img src="imagenes/astral.jpeg" alt="Captura del proyecto">
-                        <div class="card-overlay">
-                            <a href="https://joako24-dev.github.io/astral-burguers/" target="_blank" class="overlay-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Astral Burguers</h3>
-                        <p class="card-description">Tienda de hamburguesas estilo americanas.</p>
-                        <div class="card-tags">
-                            <span>HTML 5</span>
-                            <span>CSS3</span>
-                            <span>JAVA SCRIPT</span>
-                        </div>
-                        <a href="https://joako24-dev.github.io/astral-burguers/" target="_blank" class="card-button">Ver Proyecto <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-
-                <!-- Tarjeta de Proyecto 4 -->
-                <article class="project-card">
-                    <div class="card-image">
-                        <img src="https://via.placeholder.com/600x400/ff6b6b/ffffff?text=Proyecto+4" alt="Captura del proyecto">
-                        <div class="card-overlay">
-                            <a href="#" class="overlay-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Pendiente</h3>
-                        <p class="card-description">Pendiente.</p>
-                        <div class="card-tags">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <a href="#" class="card-button">Ver Proyecto <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-
-                <!-- Tarjeta de Proyecto 5 -->
-                <article class="project-card">
-                    <div class="card-image">
-                        <img src="https://via.placeholder.com/600x400/4facfe/ffffff?text=Proyecto+5" alt="Captura del proyecto">
-                        <div class="card-overlay">
-                            <a href="#" class="overlay-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Pendiente</h3>
-                        <p class="card-description">Pendiente.</p>
-                        <div class="card-tags">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <a href="#" class="card-button">Ver Proyecto <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-
-                <!-- Tarjeta de Proyecto 6 -->
-                <article class="project-card">
-                    <div class="card-image">
-                        <img src="https://via.placeholder.com/600x400/667eea/ffffff?text=Proyecto+6" alt="Captura del proyecto">
-                        <div class="card-overlay">
-                            <a href="#" class="overlay-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Pendiente</h3>
-                        <p class="card-description">Pendiente.</p>
-                        <div class="card-tags">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <a href="#" class="card-button">Ver Proyecto <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
+            <div class="skill-row">
+              <div class="skill-icon-box">C</div>
+              <div class="skill-info">
+                <span class="skill-label">CSS3</span>
+                <div class="skill-bar"><div class="skill-fill" data-w="88%"></div></div>
+              </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Contacto Section -->
-    <section id="contacto" class="contact">
-        <div class="container">
-            <h2 class="section-title">Contacto</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>¿Tienes un proyecto en mente?</h3>
-                    <p>Me encantaría escuchar sobre tu proyecto y ayudarte a hacerlo realidad. Contáctame y conversemos sobre cómo puedo contribuir a tu visión.</p>
-                    <div class="contact-details">
-                            <div class="contact-item">
-                                <a href="mailto:moralesjoaquin392@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
-                                <span>moralesjoaquin392@gmail.com</span>
-                            </div>
-                        <div class="contact-item">
-                            <a href="https://wa.me/541159627747?text=Hola%2C%20quiero%20más%20información" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
-                            <span>1159667747</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="skill-row">
+              <div class="skill-icon-box">JS</div>
+              <div class="skill-info">
+                <span class="skill-label">JavaScript</span>
+                <div class="skill-bar"><div class="skill-fill" data-w="80%"></div></div>
+              </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Morales Joaquin. Todos los derechos reservados.</p>
-            <div class="footer-social">
-                <a href="https://github.com/joako24-dev"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/joaquin-morales-514983381/"><i class="fab fa-linkedin"></i></a>
+            <div class="skill-row">
+              <div class="skill-icon-box">Py</div>
+              <div class="skill-info">
+                <span class="skill-label">Python</span>
+                <div class="skill-bar"><div class="skill-fill" data-w="72%"></div></div>
+              </div>
             </div>
-        </div>
-    </footer>
+          </div>
 
-    <script src="script.js"></script>
+          <h3 class="resume-col-title" style="margin-top:2.5rem">LO QUE PUEDO HACER</h3>
+          <ul class="can-do-list">
+            <li>Diseño Responsive &amp; Mobile-first</li>
+            <li>Animaciones CSS &amp; JS avanzadas</li>
+            <li>Integración de APIs REST</li>
+            <li>Optimización de rendimiento web</li>
+            <li>UI/UX orientado al usuario</li>
+          </ul>
+        </div>
+
+        <!-- Experience -->
+        <div class="resume-col">
+          <h3 class="resume-col-title">EXPERIENCIA</h3>
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-date">2024 — Presente</div>
+              <div class="tl-company">FREELANCE</div>
+              <div class="tl-role">Frontend Developer</div>
+              <p class="tl-desc">Desarrollo de sitios  para clientes de distintos rubros.</p>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-date">2023</div>
+              <div class="tl-company">PROYECTO PERSONAL</div>
+              <div class="tl-role">Full Stack Web</div>
+              <p class="tl-desc">Diseño y desarrollo de proyectos propios con HTML, CSS, JS y Python.</p>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-date">2022</div>
+              <div class="tl-company">FORMACIÓN</div>
+              <div class="tl-role">Desarrollo Web</div>
+              <p class="tl-desc">Aprendizaje intensivo de tecnologías frontend y backend modernas.</p>
+            </div>
+          </div>
+
+          <h3 class="resume-col-title" style="margin-top:2.5rem">EDUCACIÓN</h3>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">2022 — Presente</div>
+            <div class="tl-company">DESARROLLO WEB</div>
+            <div class="tl-role">Autodidacta + Cursos Online</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░ PORTFOLIO ░░ -->
+  <section id="portfolio" class="section portfolio-section">
+    <div class="container">
+      <div class="section-eyebrow">Portfolio</div>
+      <h2 class="section-title">MIS PROYECTOS</h2>
+
+      <div class="portfolio-filters">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="html">HTML/CSS</button>
+        <button class="filter-btn" data-filter="js">JavaScript</button>
+        <button class="filter-btn" data-filter="python">Python</button>
+      </div>
+
+      <div class="portfolio-grid" id="portfolioGrid">
+
+        <div class="port-card" data-cat="html js">
+          <div class="port-thumb p1">
+            <img src="imagenes/pasteleria.jpg" alt="Nombre del proyecto" class="port-img">
+            <div class="port-overlay">
+              <a href="https://joako24-dev.github.io/su-postres-y-delicias-" target="_blank" class="port-view-btn">Ver proyecto →</a>
+            </div>
+          </div>
+          <div class="port-info">
+            <div class="port-tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
+            <h3 class="port-name">Su Postres Y Delicias</h3>
+            <p class="port-desc">Tienda online para una pasteleria y cafeteria rural.</p>
+          </div>
+        </div>
+
+        <div class="port-card" data-cat="python html">
+          <div class="port-thumb p2">
+            <img src="imagenes/logo.jpeg" alt="Nombre del proyecto" class="port-img">
+            <div class="port-overlay">
+              <a href="https://joako24-dev.github.io/portafolio-nacho/" target="_blank" class="port-view-btn">Ver proyecto →</a>
+            </div>
+          </div>
+          <div class="port-info">
+            <div class="port-tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
+            <h3 class="port-name">Portafolio De Edicion</h3>
+            <p class="port-desc">Un portafolio realizado para la agencia de edicion de nacho la cual busca demostrar los trabajos realizados por el y brindar sus servicios de editor, la pagina cuenta con la manera de contactalo para poder recibir una atencion personal y unica en cada caso.</p>
+          </div>
+        </div>
+
+        <div class="port-card" data-cat="js">
+          <div class="port-thumb p3">
+            <img src="imagenes/astral.jpeg" alt="Nombre del proyecto" class="port-img">
+            <div class="port-overlay">
+              <a href="https://joako24-dev.github.io/astral-burguers/" target="_blank" class="port-view-btn">Ver proyecto →</a>
+            </div>
+          </div>
+          <div class="port-info">
+            <div class="port-tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
+            <h3 class="port-name">Astral Burguers</h3>
+            <p class="port-desc">Tienda de hamburguesas estilo americanas.</p>
+          </div>
+        </div>
+
+        <div class="port-card" data-cat="html">
+          <div class="port-thumb p4">
+            <div class="port-num">04</div>
+            <div class="port-overlay">
+              <a href="#" class="port-view-btn">Ver proyecto →</a>
+            </div>
+          </div>
+          <div class="port-info">
+            <div class="port-tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
+            <h3 class="port-name">pendiente</h3>
+            <p class="port-desc"></p>
+          </div>
+        </div>
+
+        <div class="port-card" data-cat="python js">
+          <div class="port-thumb p5">
+            <div class="port-num">05</div>
+            <div class="port-overlay">
+              <a href="#" class="port-view-btn">Ver proyecto →</a>
+            </div>
+          </div>
+          <div class="port-info">
+            <div class="port-tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
+            <h3 class="port-name">pendiente</h3>
+            <p class="port-desc"></p>
+          </div>
+        </div>
+
+        <div class="port-card" data-cat="html js">
+          <div class="port-thumb p6">
+            <div class="port-num">06</div>
+            <div class="port-overlay">
+              <a href="#" class="port-view-btn">Ver proyecto →</a>
+            </div>
+          </div>
+          <div class="port-info">
+            <div class="port-tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
+            <h3 class="port-name">pendiente</h3>
+            <p class="port-desc"></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░ CONTACT ░░ -->
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info-col">
+          <div class="section-eyebrow">Contact</div>
+          <h2 class="section-title">TRABAJEMOS<br>JUNTOS</h2>
+          <p class="contact-sub">Estoy disponible para proyectos freelance, colaboraciones y oportunidades laborales. No dudes en escribirme.</p>
+
+          <div class="contact-details">
+            <div class="cd-row">
+              <div class="cd-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 010 19.366V5.457c0-.904.732-1.636 1.636-1.636h.749L12 11.18l9.615-7.359h.749c.904 0 1.636.732 1.636 1.636z"/></svg>
+              </div>
+              <div>
+                <span class="cd-label">Email</span>
+                <span class="cd-val">moralesjoaquin392@gmail.com</span>
+              </div>
+            </div>
+            <div class="cd-row">
+              <div class="cd-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              </div>
+              <div>
+                <span class="cd-label">Ubicación</span>
+                <span class="cd-val">Buenos Aires, Argentina</span>
+              </div>
+            </div>
+            <div class="cd-row">
+              <div class="cd-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </div>
+              <div>
+                <span class="cd-label">GitHub</span>
+                <span class="cd-val">github.com/joako24-dev</span>
+              </div>
+            </div>
+          </div>
+        </div>
+<!--
+        <div class="contact-form-col">
+          <form class="contact-form" id="contactForm">
+            <div class="form-group">
+              <input type="text" id="fname" placeholder=" " required />
+              <label for="fname">Tu nombre</label>
+            </div>
+            <div class="form-group">
+              <input type="email" id="femail" placeholder=" " required />
+              <label for="femail">Tu email</label>
+            </div>
+            <div class="form-group">
+              <input type="text" id="fsubject" placeholder=" " />
+              <label for="fsubject">Asunto</label>
+            </div>
+            <div class="form-group">
+              <textarea id="fmsg" rows="5" placeholder=" " required></textarea>
+              <label for="fmsg">Tu mensaje</label>
+            </div>
+            <button type="submit" class="btn-solid btn-full">
+              <span>Enviar mensaje</span>
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </button>
+            <div class="form-success" id="formSuccess">¡Mensaje enviado correctamente!</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+-->
+
+  <!-- ░░ FOOTER ░░ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span class="footer-logo">JM.</span>
+      <span class="footer-copy">© 2026 Joaquín Morales. Todos los derechos reservados.</span>
+      <div class="footer-socials">
+        <a href="https://github.com/joako24-dev" target="_blank" aria-label="GitHub">GH</a>
+        <a href="https://www.linkedin.com/in/joaquin-morales-514983381/" target="_blank" aria-label="LinkedIn">LI</a>
+        <a href="#" aria-label="Email">EM</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

@@ -1,129 +1,238 @@
-// Menú Móvil
-const menuToggle = document.querySelector('.menu-toggle');
-const navLinks = document.querySelector('.nav-links');
+/* ============================================================
+   JOAQUÍN MORALES — PORTFOLIO SCRIPT
+   ============================================================ */
 
-menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    menuToggle.querySelector('i').classList.toggle('fa-bars');
-    menuToggle.querySelector('i').classList.toggle('fa-times');
-});
+'use strict';
 
-// Cerrar menú al hacer click en un enlace
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        menuToggle.querySelector('i').classList.add('fa-bars');
-        menuToggle.querySelector('i').classList.remove('fa-times');
-    });
-});
+// ── NAVBAR SCROLL ─────────────────────────────────────────────
+(function initNavbar() {
+  const navbar = document.getElementById('navbar');
+  if (!navbar) return;
 
-// Scroll suave para los enlaces de navegación
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
+  const onScroll = () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  };
 
-// Navbar sticky con efecto de cambio de color al hacer scroll
-const navbar = document.querySelector('.navbar');
-let lastScroll = 0;
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
 
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
 
-    if (currentScroll > 100) {
-        navbar.style.boxShadow = '0 5px 30px rgba(0, 0, 0, 0.1)';
-    } else {
-        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.05)';
-    }
+// ── ACTIVE NAV LINK (scroll spy) ─────────────────────────────
+(function initScrollSpy() {
+  const links    = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('section[id]');
 
-    lastScroll = currentScroll;
-});
-
-// Animaciones de entrada al hacer scroll
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
     });
-}, observerOptions);
+  }, { rootMargin: '-40% 0px -55% 0px' });
 
-// Aplicar animaciones a las tarjetas de proyectos
-document.querySelectorAll('.project-card').forEach((card, index) => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(30px)';
-    card.style.transition = `all 0.6s ease ${index * 0.1}s`;
-    observer.observe(card);
-});
+  sections.forEach(s => observer.observe(s));
+})();
 
-// Animaciones para las secciones
-document.querySelectorAll('section').forEach(section => {
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(30px)';
-    section.style.transition = 'all 0.8s ease';
-    observer.observe(section);
-});
 
-// Manejo del formulario de contacto
-const contactForm = document.querySelector('.contact-form');
+// ── HAMBURGER MENU ────────────────────────────────────────────
+(function initHamburger() {
+  const btn  = document.getElementById('hamburger');
+  const menu = document.getElementById('mobileMenu');
+  if (!btn || !menu) return;
 
-contactForm.addEventListener('submit', (e) => {
+  btn.addEventListener('click', () => {
+    const isOpen = menu.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+  });
+
+  document.querySelectorAll('.mob-link').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('open');
+      btn.classList.remove('open');
+    });
+  });
+})();
+
+
+// ── REVEAL ON SCROLL ──────────────────────────────────────────
+(function initReveal() {
+  const elements = document.querySelectorAll('.reveal');
+  if (!elements.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        // Stagger delay para grupos
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  elements.forEach(el => observer.observe(el));
+})();
+
+
+// ── SKILL BARS ANIMACIÓN ──────────────────────────────────────
+(function initSkillBars() {
+  const fills = document.querySelectorAll('.skill-fill');
+  if (!fills.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const fill = entry.target;
+        const targetWidth = fill.getAttribute('data-w') || '0%';
+        // Pequeño delay para que se vea la animación
+        setTimeout(() => {
+          fill.style.width = targetWidth;
+        }, 200);
+        observer.unobserve(fill);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  fills.forEach(fill => observer.observe(fill));
+})();
+
+
+// ── PORTFOLIO FILTERS ─────────────────────────────────────────
+(function initPortfolioFilters() {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cards      = document.querySelectorAll('.port-card');
+  if (!filterBtns.length || !cards.length) return;
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.getAttribute('data-filter');
+
+      cards.forEach(card => {
+        const cats = card.getAttribute('data-cat') || '';
+
+        if (filter === 'all' || cats.includes(filter)) {
+          card.classList.remove('hidden');
+          card.style.animation = 'fadeInCard 0.4s ease forwards';
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+})();
+
+
+// ── FORMULARIO DE CONTACTO ────────────────────────────────────
+(function initContactForm() {
+  const form    = document.getElementById('contactForm');
+  const success = document.getElementById('formSuccess');
+  if (!form || !success) return;
+
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
-    
-    // Obtener los valores del formulario
-    const formData = new FormData(contactForm);
-    const data = Object.fromEntries(formData);
-    
-    // Aquí puedes agregar tu lógica para enviar el formulario
-    // Por ejemplo, enviar a un servidor o servicio como EmailJS
-    
-    console.log('Datos del formulario:', data);
-    
-    // Mostrar mensaje de éxito
-    alert('¡Gracias por tu mensaje! Te contactaré pronto.');
-    contactForm.reset();
-});
 
-// Efecto de escritura para el título (opcional)
-const heroTitle = document.querySelector('.hero h1');
-const text = heroTitle.innerHTML;
-heroTitle.innerHTML = '';
+    const btn = form.querySelector('button[type="submit"]');
+    const originalText = btn.innerHTML;
 
-let i = 0;
-function typeWriter() {
-    if (i < text.length) {
-        heroTitle.innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typeWriter, 50);
+    // Estado de carga
+    btn.innerHTML = '<span>Enviando...</span>';
+    btn.disabled = true;
+
+    // Simula envío (reemplazar con fetch a tu backend Python)
+    setTimeout(() => {
+      form.reset();
+      btn.innerHTML = originalText;
+      btn.disabled = false;
+      success.classList.add('show');
+
+      setTimeout(() => success.classList.remove('show'), 4000);
+    }, 1500);
+  });
+})();
+
+
+// ── SMOOTH SCROLL para href="#..." ───────────────────────────
+(function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', (e) => {
+      const target = document.querySelector(anchor.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      const navH = document.getElementById('navbar')?.offsetHeight || 70;
+      const top  = target.getBoundingClientRect().top + window.scrollY - navH;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+})();
+
+
+// ── ANIMACIÓN DE NÚMEROS (stats opcionales) ──────────────────
+function animateNumber(el, target, duration = 1500) {
+  let start   = 0;
+  const step  = target / (duration / 16);
+  const timer = setInterval(() => {
+    start += step;
+    if (start >= target) {
+      el.textContent = target;
+      clearInterval(timer);
+    } else {
+      el.textContent = Math.floor(start);
     }
+  }, 16);
 }
 
-// Descomenta la siguiente línea si quieres el efecto de escritura
-// typeWriter();
 
-// Contador de habilidades animadas (opcional)
-const skillTags = document.querySelectorAll('.skill-tag');
+// ── PARTICLE LINES EN HERO (opcional, liviano) ───────────────
+(function initHeroParticles() {
+  const hero = document.querySelector('.hero-section');
+  if (!hero) return;
 
-skillTags.forEach(tag => {
-    tag.addEventListener('mouseenter', () => {
-        tag.style.transform = 'scale(1.1)';
-    });
-    
-    tag.addEventListener('mouseleave', () => {
-        tag.style.transform = 'scale(1)';
-    });
-});
+  // Agrega partículas flotantes sutiles al hero
+  for (let i = 0; i < 6; i++) {
+    const dot = document.createElement('div');
+    dot.style.cssText = `
+      position: absolute;
+      width: ${Math.random() * 3 + 1}px;
+      height: ${Math.random() * 3 + 1}px;
+      background: rgba(114,50,242,${Math.random() * 0.25 + 0.05});
+      border-radius: 50%;
+      top: ${Math.random() * 80 + 10}%;
+      left: ${Math.random() * 80 + 10}%;
+      animation: floatDot ${Math.random() * 6 + 8}s ease-in-out infinite;
+      animation-delay: ${Math.random() * 4}s;
+      pointer-events: none;
+      z-index: 1;
+    `;
+    hero.appendChild(dot);
+  }
+
+  // Inyecta keyframes si no existen
+  if (!document.getElementById('particle-style')) {
+    const style = document.createElement('style');
+    style.id = 'particle-style';
+    style.textContent = `
+      @keyframes floatDot {
+        0%, 100% { transform: translateY(0) translateX(0); opacity: 0.4; }
+        33%       { transform: translateY(-20px) translateX(10px); opacity: 0.8; }
+        66%       { transform: translateY(10px) translateX(-15px); opacity: 0.3; }
+      }
+      @keyframes fadeInCard {
+        from { opacity: 0; transform: translateY(16px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+})();
+
+
+// ── LOG DE BIENVENIDA ─────────────────────────────────────────
+console.log('%c Joaquín Morales — Portfolio ', 'background:#7232f2;color:#fff;font-weight:bold;font-size:14px;padding:4px 8px;');
+console.log('%c Frontend Developer | HTML · CSS · JS · Python ', 'color:#7232f2;font-size:11px;');
