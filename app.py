@@ -16,6 +16,11 @@ GMAIL_PASSWORD = os.getenv('GMAIL_PASSWORD')
 MAIL_TO        = os.getenv('MAIL_TO')
 
 
+@app.route('/')
+def health():
+    return 'OK', 200
+
+
 @app.route('/contact', methods=['POST'])
 def contact():
     data = request.get_json()
