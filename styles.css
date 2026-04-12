@@ -868,7 +868,7 @@ strong { color: var(--white); font-weight: 600; }
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 5rem;
   align-items: start;
 }
