@@ -135,25 +135,51 @@
   const success = document.getElementById('formSuccess');
   if (!form || !success) return;
 
-  form.addEventListener('submit', (e) => {
+  // URL del backend Python — cambiar cuando esté deployado
+  const API_URL = 'http://localhost:5000/contact';
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const btn = form.querySelector('button[type="submit"]');
-    const originalText = btn.innerHTML;
+    const originalHTML = btn.innerHTML;
 
-    // Estado de carga
     btn.innerHTML = '<span>Enviando...</span>';
     btn.disabled = true;
 
-    // Simula envío (reemplazar con fetch a tu backend Python)
-    setTimeout(() => {
-      form.reset();
-      btn.innerHTML = originalText;
-      btn.disabled = false;
-      success.classList.add('show');
+    const data = {
+      name:    document.getElementById('fname').value,
+      email:   document.getElementById('femail').value,
+      subject: document.getElementById('fsubject').value,
+      message: document.getElementById('fmsg').value,
+    };
 
-      setTimeout(() => success.classList.remove('show'), 4000);
-    }, 1500);
+    try {
+      const res = await fetch(API_URL, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(data),
+      });
+
+      if (res.ok) {
+        form.reset();
+        success.textContent = '¡Mensaje enviado correctamente!';
+        success.style.color = '';
+        success.classList.add('show');
+      } else {
+        success.textContent = 'Error al enviar. Intentá de nuevo.';
+        success.style.color = '#e05252';
+        success.classList.add('show');
+      }
+    } catch {
+      success.textContent = 'No se pudo conectar con el servidor.';
+      success.style.color = '#e05252';
+      success.classList.add('show');
+    }
+
+    btn.innerHTML = originalHTML;
+    btn.disabled = false;
+    setTimeout(() => success.classList.remove('show'), 5000);
   });
 })();
 
