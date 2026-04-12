@@ -135,8 +135,7 @@
   const success = document.getElementById('formSuccess');
   if (!form || !success) return;
 
-  // URL del backend Python — cambiar cuando esté deployado
-  const API_URL = 'http://localhost:5000/contact';
+  const API_URL = 'https://portafolio-production-4891.up.railway.app/contact';
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
